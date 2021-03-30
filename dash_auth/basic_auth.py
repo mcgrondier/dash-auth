@@ -1,6 +1,7 @@
 from .auth import Auth
 import base64
 import flask
+import ldap
 
 
 class BasicAuth(Auth):
