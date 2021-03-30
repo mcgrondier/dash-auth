@@ -18,7 +18,7 @@ class BasicAuth(Auth):
         
         connect=ldap.initialize('ldap://192.168.10.10')
         connect.set_option(ldap.OPT_REFERRALS, 0)
-        connect.simple_bind_s('username', 'password')
+        connect.simple_bind_s(username, password)
         
         result = connect.search_s('dc=butec,dc=com,dc=lb',
                           ldap.SCOPE_SUBTREE,
