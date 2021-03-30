@@ -25,7 +25,9 @@ class BasicAuth(Auth):
                           ldap.SCOPE_SUBTREE,
                           'userPrincipalName=usrename',
                           ['memberOf'])
-        print(result)
+        for i, res in enumerate(results):
+            print(i)
+            print(res)
         
         
         
