@@ -25,6 +25,7 @@ class BasicAuth(Auth):
                           ldap.SCOPE_SUBTREE,
                           'userPrincipalName=username',
                           ['memberOf'])
+        print(username)
         print(result)
         print(result[0][1])
         result=result[0][1].get('memberOf')
