@@ -26,7 +26,7 @@ class BasicAuth(Auth):
 
         result = connect.search_s('dc=butec,dc=com,dc=lb',
                                   ldap.SCOPE_SUBTREE,
-                                  'userPrincipalName=mgrondier@butec.com.lb',
+                                  f'userPrincipalName={username}',
                                   ['memberOf'])
         result=result[0][1].get('memberOf')
         print(username)
