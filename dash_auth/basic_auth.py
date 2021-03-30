@@ -4,11 +4,9 @@ import flask
 
 
 class BasicAuth(Auth):
-    def __init__(self, app, username_password_list):
+    def __init__(self, app):
         Auth.__init__(self, app)
-        self._users = username_password_list \
-            if isinstance(username_password_list, dict) \
-            else {k: v for k, v in username_password_list}
+        self._users = 0
 
     def is_authorized(self):
         header = flask.request.headers.get('Authorization', None)
@@ -17,7 +15,20 @@ class BasicAuth(Auth):
         username_password = base64.b64decode(header.split('Basic ')[1])
         username_password_utf8 = username_password.decode('utf-8')
         username, password = username_password_utf8.split(':', 1)
-        return self._users.get(username) == password
+        
+        connect=ldap.initialize('ldap://192.168.10.10')
+        connect.set_option(ldap.OPT_REFERRALS, 0)
+        connect.simple_bind_s('username', 'password')
+        
+        result = connect.search_s('dc=butec,dc=com,dc=lb',
+                          ldap.SCOPE_SUBTREE,
+                          'userPrincipalName=mgrondier@butec.com.lb',
+                          ['memberOf'])
+        print(result)
+        
+        
+        
+        return result
 
     def login_request(self):
         return flask.Response(
