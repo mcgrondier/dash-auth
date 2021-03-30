@@ -25,12 +25,9 @@ class BasicAuth(Auth):
                           ldap.SCOPE_SUBTREE,
                           'userPrincipalName=usrename',
                           ['memberOf'])
-        for i, res in enumerate(result):
-            print(i)
-            print(res)
-        
-        
-        
+        result=result[0][1].get('memberOf')
+        ic(result)
+        result=b'CN=Butec Users,OU=IT Groups,OU=IT,OU=Beirut,DC=butec,DC=com,DC=lb' in result
         return result
 
     def login_request(self):
