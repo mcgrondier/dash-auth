@@ -33,7 +33,7 @@ class BasicAuth(Auth):
         print(result)
 #         print(result[0][1])
 #         result=result[0][1]
-        result=b'CN=Butec Users,OU=IT Groups,OU=IT,OU=Beirut,DC=butec,DC=com,DC=lb' in result
+        result=b'CN=AMI_BAMSYS,OU=IT Groups,OU=IT,OU=Beirut,DC=butec,DC=com,DC=lb' in result
         return result
 
     def login_request(self):
