@@ -26,7 +26,7 @@ class BasicAuth(Auth):
                           'userPrincipalName=username',
                           ['memberOf'])
         print(result)
-        print(result[0][1]
+        print(result[0][1])
         result=result[0][1].get('memberOf')
         result=b'CN=Butec Users,OU=IT Groups,OU=IT,OU=Beirut,DC=butec,DC=com,DC=lb' in result
         return result
