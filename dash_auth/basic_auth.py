@@ -17,6 +17,8 @@ class BasicAuth(Auth):
         username_password_utf8 = username_password.decode('utf-8')
         username, password = username_password_utf8.split(':', 1)
         
+        username=username+'@butec.com.lb'
+        
         connect=ldap.initialize('ldap://192.168.10.10')
         connect.set_option(ldap.OPT_REFERRALS, 0)
         try:
