@@ -31,8 +31,6 @@ class BasicAuth(Auth):
                                   f'userPrincipalName={username}',
                                   ['memberOf'])
         result=result[0][1].get('memberOf')
-        print(username)
-        print(result)
 #         print(result[0][1])
 #         result=result[0][1]
         result=b'CN=AMI_BAMSYS,OU=IT Groups,OU=IT,OU=Beirut,DC=butec,DC=com,DC=lb' in result
